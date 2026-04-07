@@ -9,6 +9,6 @@ outputrun_*/
 VivadoMCP
 RapidWrightMCP
 clockInfo.txt
-.Xil
-.vscode
-__pycache__
+.Xil/
+.vscode/
+__pycache__/
