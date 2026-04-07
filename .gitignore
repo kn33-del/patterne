@@ -6,3 +6,9 @@ dcp_optimizer.py
 *.log
 *.jou
 outputrun_*/
+VivadoMCP
+RapidWrightMCP
+clockInfo.txt
+.Xil
+.vscode
+__pycache__
