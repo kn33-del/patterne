@@ -12,3 +12,4 @@ clockInfo.txt
 .Xil/
 .vscode/
 __pycache__/
+*.str
