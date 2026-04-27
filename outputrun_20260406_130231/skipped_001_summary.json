@@ -1,0 +1,11 @@
+{
+  "skip_num": 1,
+  "candidate_region": {
+    "col_min": 0,
+    "col_max": 20,
+    "row_min": 0,
+    "row_max": 54
+  },
+  "status": "skipped",
+  "error": "No valid sites found in specified region"
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "step_index": 1,
+    "title": "Top critical path overview",
+    "description": "Top-ranked critical paths plotted in tile space with their original bounding boxes.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1_top_paths_overview.png"
+  },
+  {
+    "step_index": 2,
+    "title": "Spread score ranking",
+    "description": "Bar chart of the path selection score used to choose local-clustering candidates.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1b_path_scores.png"
+  },
+  {
+    "step_index": 3,
+    "title": "Path detail rank 1",
+    "description": "Ordered path geometry for selected path 26.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1c_path_1_detail.png"
+  },
+  {
+    "step_index": 4,
+    "title": "Path detail rank 2",
+    "description": "Ordered path geometry for selected path 30.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1c_path_2_detail.png"
+  },
+  {
+    "step_index": 5,
+    "title": "Path detail rank 3",
+    "description": "Ordered path geometry for selected path 16.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1c_path_3_detail.png"
+  },
+  {
+    "step_index": 6,
+    "title": "Path detail rank 4",
+    "description": "Ordered path geometry for selected path 11.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1c_path_4_detail.png"
+  },
+  {
+    "step_index": 7,
+    "title": "Path detail rank 5",
+    "description": "Ordered path geometry for selected path 7.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_1c_path_5_detail.png"
+  },
+  {
+    "step_index": 101,
+    "title": "Candidate 1 region",
+    "description": "Local pblock built around path 26; result WNS=0.097.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_1_region.png"
+  },
+  {
+    "step_index": 102,
+    "title": "Candidate 2 region",
+    "description": "Local pblock built around path 30; result WNS=0.115.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_2_region.png"
+  },
+  {
+    "step_index": 103,
+    "title": "Candidate 3 region",
+    "description": "Local pblock built around path 16; result WNS=0.084.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_3_region.png"
+  },
+  {
+    "step_index": 104,
+    "title": "Candidate 4 region",
+    "description": "Local pblock built around path 11; result WNS=0.13.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_4_region.png"
+  },
+  {
+    "step_index": 105,
+    "title": "Candidate 5 region",
+    "description": "Local pblock built around path 7; result WNS=0.055.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_5_region.png"
+  },
+  {
+    "step_index": 200,
+    "title": "Candidate WNS comparison",
+    "description": "WNS achieved by each candidate after place, optional phys-opt, and route.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_3_candidate_wns.png"
+  },
+  {
+    "step_index": 201,
+    "title": "Candidate delta WNS",
+    "description": "Improvement of each candidate relative to the original checkpoint.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_4_candidate_improvement.png"
+  },
+  {
+    "step_index": 202,
+    "title": "Best candidate selection",
+    "description": "Final chosen path and local pblock region.",
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_5_best_candidate.png"
+  }
+]

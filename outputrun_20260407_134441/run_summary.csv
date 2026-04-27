@@ -1,0 +1,12 @@
+attempt_num,status,pblock_ranges,col_min,col_max,row_min,row_max,wns,tns,failing_endpoints,improved_vs_baseline,output_dcp,error
+1,success,SLICE_X8Y15:SLICE_X21Y49,23,43,86,140,-0.601,-110.662,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_1.dcp,
+2,success,SLICE_X48Y49:SLICE_X61Y100 RAMB18_X3Y21:RAMB18_X3Y41 RAMB36_X3Y10:RAMB36_X3Y20,83,103,51,105,-0.61,-117.358,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_2.dcp,
+1,skipped,,0,20,0,54,,,,,,No valid sites found in specified region
+3,success,SLICE_X106Y98:SLICE_X113Y149 RAMB18_X5Y41:RAMB18_X5Y59 RAMB36_X5Y20:RAMB36_X5Y29,166,186,0,54,-0.553,-111.34,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_3.dcp,
+4,success,SLICE_X0Y0:SLICE_X7Y49 RAMB18_X0Y1:RAMB18_X0Y19 RAMB36_X0Y0:RAMB36_X0Y9,0,20,102,156,-0.57,-117.801,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_4.dcp,
+5,success,SLICE_X106Y0:SLICE_X113Y51 RAMB18_X5Y1:RAMB18_X5Y21 RAMB36_X5Y0:RAMB36_X5Y10,166,186,102,156,-0.479,-87.247,302.0,True,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_5.dcp,
+6,success,SLICE_X100Y9:SLICE_X113Y61 RAMB18_X5Y5:RAMB18_X5Y25 RAMB36_X5Y2:RAMB36_X5Y12,156,176,92,146,-0.63,-121.583,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_6.dcp,
+7,success,SLICE_X0Y9:SLICE_X13Y49 RAMB18_X0Y5:RAMB18_X0Y19 RAMB36_X0Y2:RAMB36_X0Y9,10,30,92,146,-0.501,-109.218,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_7.dcp,
+8,success,SLICE_X100Y88:SLICE_X113Y140 RAMB18_X5Y37:RAMB18_X5Y57 RAMB36_X5Y18:RAMB36_X5Y28,156,176,10,64,-0.491,-100.111,302.0,True,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_8.dcp,
+9,success,SLICE_X48Y79:SLICE_X59Y131 RAMB18_X3Y33:RAMB18_X3Y53 RAMB36_X3Y16:RAMB36_X3Y26,82,102,19,73,-0.646,-127.908,302.0,False,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_9.dcp,
+10,success,SLICE_X58Y18:SLICE_X77Y70,101,121,83,137,-0.465,-100.743,302.0,True,/home/vik/ie421/outputrun_20260407_134441/reduction_or_routed_10.dcp,

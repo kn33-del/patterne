@@ -1,0 +1,23 @@
+attempt_num,status,pblock_ranges,col_min,col_max,row_min,row_max,wns,tns,failing_endpoints,improved_vs_baseline,output_dcp,error
+1,success,SLICE_X8Y15:SLICE_X21Y49,23,43,86,140,-0.601,-110.662,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_1.dcp,
+2,success,SLICE_X48Y49:SLICE_X61Y100 RAMB18_X3Y21:RAMB18_X3Y41 RAMB36_X3Y10:RAMB36_X3Y20,83,103,51,105,-0.61,-117.358,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_2.dcp,
+1,skipped,,0,20,0,54,,,,,,No valid sites found in specified region
+3,success,SLICE_X106Y98:SLICE_X113Y149 RAMB18_X5Y41:RAMB18_X5Y59 RAMB36_X5Y20:RAMB36_X5Y29,166,186,0,54,-0.553,-111.34,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_3.dcp,
+4,success,SLICE_X0Y0:SLICE_X7Y49 RAMB18_X0Y1:RAMB18_X0Y19 RAMB36_X0Y0:RAMB36_X0Y9,0,20,102,156,-0.57,-117.801,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_4.dcp,
+5,success,SLICE_X106Y0:SLICE_X113Y51 RAMB18_X5Y1:RAMB18_X5Y21 RAMB36_X5Y0:RAMB36_X5Y10,166,186,102,156,-0.479,-87.247,302.0,True,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_5.dcp,
+6,success,SLICE_X100Y9:SLICE_X113Y61 RAMB18_X5Y5:RAMB18_X5Y25 RAMB36_X5Y2:RAMB36_X5Y12,156,176,92,146,-0.63,-121.583,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_6.dcp,
+7,success,SLICE_X0Y9:SLICE_X13Y49 RAMB18_X0Y5:RAMB18_X0Y19 RAMB36_X0Y2:RAMB36_X0Y9,10,30,92,146,-0.501,-109.218,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_7.dcp,
+8,success,SLICE_X100Y88:SLICE_X113Y140 RAMB18_X5Y37:RAMB18_X5Y57 RAMB36_X5Y18:RAMB36_X5Y28,156,176,10,64,-0.491,-100.111,302.0,True,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_8.dcp,
+9,success,SLICE_X48Y79:SLICE_X59Y131 RAMB18_X3Y33:RAMB18_X3Y53 RAMB36_X3Y16:RAMB36_X3Y26,82,102,19,73,-0.646,-127.908,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_9.dcp,
+10,success,SLICE_X58Y18:SLICE_X77Y70,101,121,83,137,-0.465,-100.743,302.0,True,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_10.dcp,
+2,skipped,,12,32,9,63,,,,,,No valid sites found in specified region
+11,success,SLICE_X90Y86:SLICE_X101Y138 RAMB18_X4Y37:RAMB18_X4Y55 RAMB36_X4Y18:RAMB36_X4Y27,137,157,12,66,-0.634,-128.837,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_11.dcp,
+12,success,SLICE_X54Y26:SLICE_X69Y78 RAMB18_X3Y13:RAMB18_X3Y31 RAMB36_X3Y6:RAMB36_X3Y15,93,113,74,128,-0.478,-89.207,302.0,True,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_12.dcp,
+13,success,SLICE_X4Y36:SLICE_X17Y49 RAMB18_X0Y17:RAMB18_X0Y19 RAMB36_X0Y8:RAMB36_X0Y9,14,34,64,118,-0.645,-128.915,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_13.dcp,
+14,success,SLICE_X28Y94:SLICE_X41Y146 RAMB18_X2Y39:RAMB18_X2Y59 RAMB36_X2Y19:RAMB36_X2Y29,54,74,4,58,-0.546,-115.644,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_14.dcp,
+15,success,SLICE_X8Y45:SLICE_X19Y49,22,42,55,109,-0.591,-111.074,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_15.dcp,
+16,success,SLICE_X64Y90:SLICE_X67Y142,107,127,8,62,-0.651,-100.679,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_16.dcp,
+17,success,SLICE_X32Y87:SLICE_X47Y139,61,81,11,65,-0.536,-112.626,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_17.dcp,
+18,success,SLICE_X90Y46:SLICE_X101Y98,141,161,54,108,-0.559,-104.702,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_18.dcp,
+19,success,SLICE_X50Y62:SLICE_X65Y114 RAMB18_X3Y27:RAMB18_X3Y45 RAMB36_X3Y13:RAMB36_X3Y22,87,107,37,91,-0.529,-90.096,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_19.dcp,
+20,success,SLICE_X20Y0:SLICE_X33Y51 RAMB18_X1Y1:RAMB18_X2Y21 RAMB36_X1Y0:RAMB36_X2Y10,43,63,102,156,-0.592,-125.494,302.0,False,/home/vik/ie421/outputrun_20260406_130231/reduction_or_routed_20.dcp,

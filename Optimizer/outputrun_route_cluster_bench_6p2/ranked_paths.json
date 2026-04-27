@@ -1,0 +1,82 @@
+[
+  {
+    "rank": 1,
+    "path_index": 26,
+    "cell_count": 5,
+    "bbox": [
+      0,
+      152,
+      45,
+      129
+    ],
+    "bbox_width": 153,
+    "bbox_height": 85,
+    "max_consecutive_distance": 236,
+    "avg_consecutive_distance": 143.5,
+    "score": 627.225
+  },
+  {
+    "rank": 2,
+    "path_index": 30,
+    "cell_count": 5,
+    "bbox": [
+      0,
+      143,
+      41,
+      129
+    ],
+    "bbox_width": 144,
+    "bbox_height": 89,
+    "max_consecutive_distance": 231,
+    "avg_consecutive_distance": 156.5,
+    "score": 625.975
+  },
+  {
+    "rank": 3,
+    "path_index": 16,
+    "cell_count": 5,
+    "bbox": [
+      0,
+      152,
+      58,
+      129
+    ],
+    "bbox_width": 153,
+    "bbox_height": 72,
+    "max_consecutive_distance": 223,
+    "avg_consecutive_distance": 134.25,
+    "score": 591.6875
+  },
+  {
+    "rank": 4,
+    "path_index": 11,
+    "cell_count": 5,
+    "bbox": [
+      0,
+      173,
+      70,
+      148
+    ],
+    "bbox_width": 174,
+    "bbox_height": 79,
+    "max_consecutive_distance": 192,
+    "avg_consecutive_distance": 151.0,
+    "score": 547.85
+  },
+  {
+    "rank": 5,
+    "path_index": 7,
+    "cell_count": 5,
+    "bbox": [
+      0,
+      172,
+      70,
+      141
+    ],
+    "bbox_width": 173,
+    "bbox_height": 72,
+    "max_consecutive_distance": 184,
+    "avg_consecutive_distance": 145.0,
+    "score": 525.75
+  }
+]

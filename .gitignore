@@ -5,7 +5,7 @@ RapidWrightMCP/test_server.py
 dcp_optimizer.py
 *.log
 *.jou
-outputrun_*/
+
 VivadoMCP
 RapidWrightMCP
 clockInfo.txt

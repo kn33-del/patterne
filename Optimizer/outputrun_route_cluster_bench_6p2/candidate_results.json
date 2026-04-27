@@ -1,0 +1,82 @@
+[
+  {
+    "candidate_id": 1,
+    "path_index": 26,
+    "pblock_ranges": "SLICE_X0Y16:SLICE_X103Y116 RAMB18_X0Y9:RAMB18_X4Y47 RAMB36_X0Y4:RAMB36_X4Y23",
+    "checkpoint_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/candidate_1.dcp",
+    "wns": 0.097,
+    "success": true,
+    "note": "path=26 bbox=153x85 max_step=236",
+    "region": [
+      0,
+      162,
+      35,
+      139
+    ],
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_1_region.png"
+  },
+  {
+    "candidate_id": 2,
+    "path_index": 30,
+    "pblock_ranges": "SLICE_X0Y16:SLICE_X99Y120 RAMB18_X0Y9:RAMB18_X4Y49 RAMB36_X0Y4:RAMB36_X4Y24",
+    "checkpoint_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/candidate_2.dcp",
+    "wns": 0.115,
+    "success": true,
+    "note": "path=30 bbox=144x89 max_step=231",
+    "region": [
+      0,
+      153,
+      31,
+      139
+    ],
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_2_region.png"
+  },
+  {
+    "candidate_id": 3,
+    "path_index": 16,
+    "pblock_ranges": "SLICE_X0Y16:SLICE_X103Y103 RAMB18_X0Y9:RAMB18_X4Y41 RAMB36_X0Y4:RAMB36_X4Y20",
+    "checkpoint_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/candidate_3.dcp",
+    "wns": 0.084,
+    "success": true,
+    "note": "path=16 bbox=153x72 max_step=223",
+    "region": [
+      0,
+      162,
+      48,
+      139
+    ],
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_3_region.png"
+  },
+  {
+    "candidate_id": 4,
+    "path_index": 11,
+    "pblock_ranges": "SLICE_X0Y0:SLICE_X113Y92 RAMB18_X0Y1:RAMB18_X5Y37 RAMB36_X0Y0:RAMB36_X5Y18",
+    "checkpoint_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/candidate_4.dcp",
+    "wns": 0.13,
+    "success": true,
+    "note": "path=11 bbox=174x79 max_step=192",
+    "region": [
+      0,
+      183,
+      60,
+      156
+    ],
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_4_region.png"
+  },
+  {
+    "candidate_id": 5,
+    "path_index": 7,
+    "pblock_ranges": "SLICE_X0Y4:SLICE_X113Y92 RAMB18_X0Y3:RAMB18_X5Y37 RAMB36_X0Y1:RAMB36_X5Y18",
+    "checkpoint_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/candidate_5.dcp",
+    "wns": 0.055,
+    "success": true,
+    "note": "path=7 bbox=173x72 max_step=184",
+    "region": [
+      0,
+      182,
+      60,
+      151
+    ],
+    "figure_path": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures/step_2_candidate_5_region.png"
+  }
+]

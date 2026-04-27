@@ -1,0 +1,14 @@
+{
+  "input_dcp": "/home/vik/ie421/Optimizer/Original DCPs/route_cluster_bench_6p2_impl.dcp",
+  "output_dcp": "/home/vik/ie421/Optimizer/Optimized DCPs/route_cluster_bench_6p2_optimized.dcp",
+  "work_dir": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2",
+  "initial_wns": -0.093,
+  "best_wns": 0.13,
+  "wns_improvement": 0.223,
+  "clock_period_ns": 6.2,
+  "best_fmax_mhz": 164.74464579901152,
+  "best_candidate_id": 4,
+  "best_path_index": 11,
+  "best_pblock_ranges": "SLICE_X0Y0:SLICE_X113Y92 RAMB18_X0Y1:RAMB18_X5Y37 RAMB36_X0Y0:RAMB36_X5Y18",
+  "figures_dir": "/home/vik/ie421/Optimizer/outputrun_route_cluster_bench_6p2/figures"
+}
