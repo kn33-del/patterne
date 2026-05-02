@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (C) 2026, Advanced Micro Devices, Inc. All rights reserved.
-# Portions of this file consist of AI-generated content.
 # SPDX-License-Identifier: Apache 2.0
 
 """
-Optimization History Tracker for FPGA Design Optimization Agent
 
 Wraps DCPOptimizer with per-iteration history tracking:
   - Prompt and API call records for every Grok call
@@ -210,7 +208,7 @@ class OptimizationHistory:
         lines.append("OPTIMIZATION HISTORY  (read before deciding next action)")
         lines.append("=" * 60)
 
-        # ── Metric trajectory ────────────────────────────────────────
+        # the Metric trajectory
         if self.iterations:
             lines.append("\n[Metric trajectory]")
             lines.append(
@@ -228,7 +226,7 @@ class OptimizationHistory:
                     f"{m.iteration:>4}  {wns_s:>9}  {fmax_s:>10}  {dwns_s:>8}  {dfmax_s:>8}  {flag}{extra}"
                 )
 
-        # ── Strategies already attempted ─────────────────────────────
+        # Strategies already attempted
         attempted_strategies: dict[str, list[int]] = {}
         for m in self.iterations:
             for t in m.tools_called:
@@ -239,7 +237,7 @@ class OptimizationHistory:
             for tool, iters in attempted_strategies.items():
                 lines.append(f"  {tool}: iterations {iters}")
 
-        # ── Regression warnings ───────────────────────────────────────
+        #Regression warnings
         regressions = [m for m in self.iterations if (m.wns_delta or 0) < 0]
         if regressions:
             lines.append("\n[Iterations that caused regressions – do NOT repeat these]")
@@ -248,11 +246,11 @@ class OptimizationHistory:
                     f"  Iter {m.iteration}: WNS went {m.wns_delta:+.3f} ns  tools={m.tools_called}"
                 )
 
-        # ── All-time best ─────────────────────────────────────────────
+        #All time best (ask brindha for more info)
         if self._all_time_best_wns is not None:
             lines.append(f"\n[All-time best WNS so far: {self._all_time_best_wns:+.3f} ns]")
 
-        # ── Recent prompt summary (last 3 calls) ──────────────────────
+        # recent prompt summary (last 3 calls)
         if self.prompt_records:
             recent = self.prompt_records[-3:]
             lines.append("\n[Recent API calls]")
@@ -497,17 +495,17 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
         self._history_path = self.run_dir / "history.json"
 
         # ------------------------------------------------------------------
-        # Patch: wrap the base optimize() loop so we can inject
+        # wrap the base optimize() loop so we can inject
         # per-iteration metric snapshots.
         #
-        # Strategy: we reproduce the outer loop logic from DCPOptimizer.optimize()
+        # Strategy is that we reproduce the outer loop logic from DCPOptimizer.optimize()
         # but add metric capture after each iteration.
         # ------------------------------------------------------------------
         from pathlib import Path as _Path
 
         self.start_time = time.time()
 
-        # ── Initial analysis (same as base class) ──────────────────────
+        #  Initial analysis (same as base class) 
         try:
             initial_analysis = await self.perform_initial_analysis(input_dcp)
         except Exception as exc:
@@ -530,7 +528,7 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
         )
         self._last_known_wns = self.initial_wns
 
-        # ── Timing already met? ──────────────────────────────────────
+        # if Timing already met?
         if self.initial_wns is not None and self.initial_wns >= 0:
             logger.info("Design already meets timing")
             await self.call_tool("vivado_write_checkpoint", {
@@ -546,7 +544,7 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
             self.history.save(self._history_path)
             return True
 
-        # ── Build initial prompt (same as base class) ────────────────
+        #Build initial prompt (same as base class)
         from optimizer import load_system_prompt
         system_prompt_template = load_system_prompt()
         system_prompt = system_prompt_template.format(
@@ -578,7 +576,7 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
         max_iterations = 50
         terminal_log("INFO", "Starting LLM-driven optimization with history tracking")
 
-        # ── Main loop ────────────────────────────────────────────────
+        #  Main loop
         while self.iteration < max_iterations:
             self.iteration += 1
             logger.info(f"=== Iteration {self.iteration} ===")
@@ -587,17 +585,17 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
             try:
                 response_text, is_done = await self.get_completion()
 
-                # ── Capture Vivado metrics after the iteration ────────
+                # Capture Vivado metrics after the iteration 
                 wns, tns, failing_eps = await self._fetch_metrics_from_vivado()
                 self._snapshot_metrics(wns, tns, failing_eps)
 
-                # ── Persist history after every iteration ─────────────
+                # Persist history after every iteration
                 try:
                     self.history.save(self._history_path)
                 except Exception as save_exc:
                     logger.warning(f"[History] Could not save history: {save_exc}")
 
-                # ── Log iteration result ──────────────────────────────
+                # Log iteration result 
                 best_fmax = (
                     self.calculate_fmax(self.best_wns, self.clock_period)
                     if self.best_wns not in (None, float("-inf"))
@@ -633,7 +631,7 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
                     ),
                 })
 
-        # ── Max iterations hit ────────────────────────────────────────
+        #  Max iterations hit 
         logger.warning("Reached maximum iterations")
         self.end_time = time.time()
         self._print_optimization_summary(max_iterations_reached=True)
