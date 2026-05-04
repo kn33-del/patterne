@@ -6,6 +6,8 @@ import random
 from dataclasses import dataclass
 from typing import List, Tuple
 
+import matplotlib
+matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 

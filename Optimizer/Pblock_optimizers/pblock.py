@@ -23,9 +23,12 @@ from RapidWrightMCP.rapidwright_tools import (
 
 from VivadoMCP.vivado_mcp_server import run_tcl_command
 
+class PblockError(RuntimeError):
+    pass
+
+
 def fail(msg: str) -> None:
-    print("ERROR: " + msg, file=sys.stderr)
-    sys.exit(1)
+    raise PblockError(msg)
 
 
 def expect_success(result: Any, step_name: str) -> Any:
@@ -94,6 +97,12 @@ def report_utilization_for_pblock(timeout: float = 300.0) -> str:
 
 def maybe_get_clock_period_ns(timeout: float = 30.0) -> Optional[float]:
     try:
+        clock_count_output = tcl("llength [get_clocks]", timeout=timeout)
+        for line in clock_count_output.splitlines():
+            line = line.strip()
+            if line.isdigit() and int(line) <= 0:
+                return None
+
         output = tcl("get_property PERIOD [lindex [get_clocks] 0]", timeout=timeout)
         for line in output.splitlines():
             line = line.strip()
@@ -129,6 +138,13 @@ def get_cell_query(apply_to: str) -> str:
     return f"[get_cells {apply_to}]"
 
 
+def get_unplace_cell_query(apply_to: str) -> str:
+    # unplace_cell only accepts leaf-level instances, not parent hierarchy cells.
+    if apply_to == "current_design":
+        return "[get_cells -quiet -hierarchical -filter {IS_PRIMITIVE}]"
+    return f"[get_cells -quiet -hierarchical {apply_to} -filter {{IS_PRIMITIVE}}]"
+
+
 def create_and_apply_pblock(
     pblock_name: str,
     ranges: str,
@@ -161,7 +177,7 @@ def create_and_apply_pblock(
 
 
 def unplace_cells(apply_to: str = "current_design", timeout: float = 300.0) -> str:
-    cell_query = get_cell_query(apply_to)
+    cell_query = get_unplace_cell_query(apply_to)
     return tcl(f"unplace_cell {cell_query}", timeout=timeout)
 
 
@@ -933,4 +949,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except PblockError as exc:
+        print("ERROR: " + str(exc), file=sys.stderr)
+        sys.exit(1)

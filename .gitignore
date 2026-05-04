@@ -1,15 +1,50 @@
+# Local environments
+.venv/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Vivado / RapidWright scratch
+.Xil/
+**/.Xil/
+*.jou
+*.log
+*.str
+clockInfo.txt
+tight_setup_hold_pins.txt
+
+# Generated optimization artifacts
 dcp_optimizer_run-*/
-RapidWrightMCP/__pycache__
+**/dcp_optimizer_run-*/
+outputrun_*/
+**/outputrun_*/
+replay_run_*/
+**/replay_run_*/
+*_readable_edif_*/
+*.dcp.edf/
+route_c_optim.dcp
+route_c_optim.dcp.edf/
+
+# Dashboard local data
+dashboard_data/
+
+# Frontend build output
+dashboard_frontend/node_modules/
+dashboard_frontend/dist/
+dashboard_frontend/*.tsbuildinfo
+dashboard_frontend/vite.config.d.ts
+
+# Backend cache
+dashboard_backend/__pycache__/
+dashboard_backend/tests/__pycache__/
+
+# Optimizer caches
+Optimizer/__pycache__/
+Optimizer/**/__pycache__/
+
+# Legacy local files
 VivadoMCP/test_vivado_mcp.py
 RapidWrightMCP/test_server.py
 dcp_optimizer.py
-*.log
-*.jou
-
-VivadoMCP
-RapidWrightMCP
-clockInfo.txt
-.Xil/
-.vscode/
-__pycache__/
-*.str

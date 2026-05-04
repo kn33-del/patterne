@@ -131,20 +131,42 @@ def parse_timing_summary_static(timing_report: str) -> dict:
     return result
 
 
+def is_better_wns(new_wns: Optional[float], previous_wns: Optional[float]) -> bool:
+    """Return True when the new WNS is an improvement.
+
+    WNS is a slack metric, so larger is always better. This applies across
+    negative and positive values alike:
+    - 0.25 ns is better than 0.10 ns
+    - -0.05 ns is better than -0.20 ns
+    """
+    if new_wns is None:
+        return False
+    if previous_wns is None:
+        return True
+    return new_wns > previous_wns
+
+
 def load_system_prompt() -> str:
     """Load system prompt from SYSTEM_PROMPT.TXT file."""
     script_dir = Path(__file__).parent.resolve()
-    prompt_file = script_dir / "SYSTEM_PROMPT.TXT"
-    
-    try:
-        with open(prompt_file, 'r') as f:
-            return f.read()
-    except FileNotFoundError:
-        logger.error(f"System prompt file not found: {prompt_file}")
-        raise
-    except Exception as e:
-        logger.error(f"Failed to load system prompt: {e}")
-        raise
+    candidate_paths = [
+        script_dir / "SYSTEM_PROMPT.TXT",
+        script_dir.parent / "SYSTEM_PROMPT.TXT",
+    ]
+
+    for prompt_file in candidate_paths:
+        if prompt_file.exists():
+            try:
+                with open(prompt_file, 'r') as f:
+                    return f.read()
+            except Exception as e:
+                logger.error(f"Failed to load system prompt from {prompt_file}: {e}")
+                raise
+
+    candidate_text = ", ".join(str(path) for path in candidate_paths)
+    message = f"System prompt file not found. Checked: {candidate_text}"
+    logger.error(message)
+    raise FileNotFoundError(message)
 
 
 def convert_mcp_tool_to_openai(tool, server_prefix: str) -> dict:
@@ -515,12 +537,14 @@ class DCPOptimizer(DCPOptimizerBase):
         api_key: str,
         model: str = DEFAULT_MODEL,
         debug: bool = False,
-        run_dir: Optional[Path] = None
+        run_dir: Optional[Path] = None,
+        continue_when_timing_met: bool = False,
     ):
         super().__init__(debug=debug, run_dir=run_dir)
         
         self.api_key = api_key
         self.model = model
+        self.continue_when_timing_met = continue_when_timing_met
         self.tools: list[dict] = []
         self.messages: list[dict] = []
         
@@ -606,7 +630,7 @@ class DCPOptimizer(DCPOptimizerBase):
                     # Format fmax string if available
                     fmax_str = f", fmax: {current_fmax:.2f} MHz" if current_fmax is not None else ""
                     
-                    if current_wns > self.best_wns:
+                    if is_better_wns(current_wns, self.best_wns):
                         logger.info(f"New best WNS: {current_wns:.3f} ns{fmax_str} (improved from {self.best_wns:.3f} ns)")
                         self.best_wns = current_wns
                     else:
@@ -623,7 +647,7 @@ class DCPOptimizer(DCPOptimizerBase):
                     # Format fmax string if available
                     fmax_str = f", fmax: {current_fmax:.2f} MHz" if current_fmax is not None else ""
                     
-                    if current_wns > self.best_wns:
+                    if is_better_wns(current_wns, self.best_wns):
                         logger.info(f"New best WNS (from get_wns): {current_wns:.3f} ns{fmax_str} (improved from {self.best_wns:.3f} ns)")
                         self.best_wns = current_wns
                     else:
@@ -738,16 +762,20 @@ class DCPOptimizer(DCPOptimizerBase):
         # No tool calls - check if we're done
         content = message.content or ""
         
-        # Check for completion indicators
-        is_done = any(phrase in content.lower() for phrase in [
+        content_lower = content.lower()
+        completion_phrases = [
             "optimization complete",
-            "timing is met",
-            "wns >= 0",
             "no more optimizations",
-            "design meets timing",
             "successfully saved",
             "final design saved"
-        ])
+        ]
+        if not self.continue_when_timing_met:
+            completion_phrases.extend([
+                "timing is met",
+                "wns >= 0",
+                "design meets timing",
+            ])
+        is_done = any(phrase in content_lower for phrase in completion_phrases)
         
         return content, is_done
     
@@ -1012,8 +1040,12 @@ class DCPOptimizer(DCPOptimizerBase):
             self.end_time = time.time()
             return False
         
-        # Check if timing is already met
-        if self.initial_wns is not None and self.initial_wns >= 0:
+        if self.initial_wns is not None and self.initial_wns >= 0 and self.continue_when_timing_met:
+            logger.info("Design already meets timing, but continuing optimization because --continue-when-timing-met is enabled")
+            terminal_log("INFO", "Continuing optimization even though initial WNS is already non-negative", wns=self.initial_wns)
+
+        # Check if timing is already met and the caller wants to stop there.
+        if self.initial_wns is not None and self.initial_wns >= 0 and not self.continue_when_timing_met:
             logger.info("Design already meets timing")
             # Save the design as-is
             await self.call_tool("vivado_write_checkpoint", {
@@ -1054,6 +1086,8 @@ PATHS:
 CURRENT STATE:
 - Vivado has the input design ALREADY OPEN and analyzed
 - RapidWright has the input design ALREADY LOADED (from initial analysis)
+- WNS is a slack metric, so larger is always better even when already positive
+- {"Continue optimizing even when WNS is already positive." if self.continue_when_timing_met else "You may stop when timing is met if no better improvement looks worthwhile."}
 
 INITIAL ANALYSIS RESULTS:
 {initial_analysis}
@@ -1909,6 +1943,16 @@ Examples:
         default=5,
         help="Maximum number of high fanout nets to optimize in test mode (default: 5)"
     )
+    parser.add_argument(
+        "--continue-when-timing-met",
+        action="store_true",
+        help="Allow the AI optimization loop to continue even when the current WNS is already non-negative."
+    )
+    parser.add_argument(
+        "--run-dir",
+        type=Path,
+        help="Optional run directory for logs, reports, and intermediate artifacts."
+    )
     
     args = parser.parse_args()
     
@@ -1933,8 +1977,11 @@ Examples:
     # Test mode - run without LLM
     if args.test:
         # Create run directory with timestamp
-        timestamp = time.strftime("%Y%m%d_%H%M%S")
-        run_dir = Path.cwd() / f"dcp_optimizer_run-{timestamp}"
+        if args.run_dir is not None:
+            run_dir = args.run_dir.resolve()
+        else:
+            timestamp = time.strftime("%Y%m%d_%H%M%S")
+            run_dir = Path.cwd() / f"dcp_optimizer_run-{timestamp}"
         
         terminal_log("TEST", f"TEST MODE - Input: {args.input_dcp.name}; Output: {args.output_dcp.name}; Run dir: {run_dir}")
         
@@ -1958,8 +2005,11 @@ Examples:
         sys.exit(1)
     
     # Create run directory with timestamp (before creating optimizer so we can show it)
-    timestamp = time.strftime("%Y%m%d_%H%M%S")
-    run_dir = Path.cwd() / f"dcp_optimizer_run-{timestamp}"
+    if args.run_dir is not None:
+        run_dir = args.run_dir.resolve()
+    else:
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        run_dir = Path.cwd() / f"dcp_optimizer_run-{timestamp}"
     
     terminal_log("INFO", f"FPGA Design Optimization Agent starting. Input: {args.input_dcp.name}; Output: {args.output_dcp.name}; Run dir: {run_dir}")
     
@@ -1967,7 +2017,8 @@ Examples:
         api_key=args.api_key,
         model=args.model,
         debug=args.debug,
-        run_dir=run_dir
+        run_dir=run_dir,
+        continue_when_timing_met=args.continue_when_timing_met,
     )
     
     try:
