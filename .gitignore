@@ -48,3 +48,4 @@ Optimizer/**/__pycache__/
 VivadoMCP/test_vivado_mcp.py
 RapidWrightMCP/test_server.py
 dcp_optimizer.py
+*.edf

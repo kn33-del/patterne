@@ -1,0 +1,461 @@
+{
+  "model": "x-ai/grok-4.3",
+  "timestamp": "2026-05-20 20:30:53",
+  "summary": {
+    "total_runtime_seconds": 122.52922439575195,
+    "total_llm_calls": 27,
+    "total_iterations": 15,
+    "total_prompt_tokens": 407887,
+    "total_completion_tokens": 2257,
+    "total_tokens": 410144,
+    "total_cached_tokens": 345216,
+    "total_reasoning_tokens": 1498,
+    "total_cost": 0.15302445,
+    "clock_period_ns": null,
+    "initial_wns": null,
+    "best_wns": 0.0,
+    "wns_improvement": null,
+    "initial_fmax_mhz": null,
+    "best_fmax_mhz": null,
+    "fmax_improvement_mhz": null,
+    "total_tool_calls": 21,
+    "total_tool_time_seconds": 77.36608290672302,
+    "tool_call_counts": {
+      "rapidwright_initialize_rapidwright": 1,
+      "vivado_open_checkpoint": 2,
+      "vivado_report_timing_summary": 2,
+      "vivado_run_tcl": 3,
+      "vivado_get_critical_high_fanout_nets": 2,
+      "rapidwright_read_checkpoint": 1,
+      "vivado_extract_critical_path_cells": 1,
+      "rapidwright_analyze_critical_path_spread": 1,
+      "rapidwright_optimize_fanout": 3,
+      "rapidwright_get_design_info": 1,
+      "rapidwright_write_checkpoint": 1,
+      "vivado_route_design": 1,
+      "vivado_get_wns": 1,
+      "vivado_write_checkpoint": 1
+    }
+  },
+  "per_llm_call_details": [
+    {
+      "call_number": 1,
+      "iteration": 1,
+      "prompt_tokens": 7689,
+      "completion_tokens": 296,
+      "total_tokens": 7985,
+      "cost": 0.01021685,
+      "cached_tokens": 128,
+      "reasoning_tokens": 228
+    },
+    {
+      "call_number": 2,
+      "iteration": 1,
+      "prompt_tokens": 8046,
+      "completion_tokens": 144,
+      "total_tokens": 8190,
+      "cost": 0.0023535,
+      "cached_tokens": 7680,
+      "reasoning_tokens": 116
+    },
+    {
+      "call_number": 3,
+      "iteration": 1,
+      "prompt_tokens": 8226,
+      "completion_tokens": 234,
+      "total_tokens": 8460,
+      "cost": 0.0107331,
+      "cached_tokens": 128,
+      "reasoning_tokens": 226
+    },
+    {
+      "call_number": 4,
+      "iteration": 1,
+      "prompt_tokens": 8638,
+      "completion_tokens": 243,
+      "total_tokens": 8881,
+      "cost": 0.0028034,
+      "cached_tokens": 8192,
+      "reasoning_tokens": 207
+    },
+    {
+      "call_number": 5,
+      "iteration": 1,
+      "prompt_tokens": 8929,
+      "completion_tokens": 49,
+      "total_tokens": 8978,
+      "cost": 0.00227895,
+      "cached_tokens": 8576,
+      "reasoning_tokens": 16
+    },
+    {
+      "call_number": 6,
+      "iteration": 1,
+      "prompt_tokens": 9249,
+      "completion_tokens": 105,
+      "total_tokens": 9354,
+      "cost": 0.00248295,
+      "cached_tokens": 8896,
+      "reasoning_tokens": 71
+    },
+    {
+      "call_number": 7,
+      "iteration": 1,
+      "prompt_tokens": 9667,
+      "completion_tokens": 77,
+      "total_tokens": 9744,
+      "cost": 0.00259945,
+      "cached_tokens": 9216,
+      "reasoning_tokens": 40
+    },
+    {
+      "call_number": 8,
+      "iteration": 1,
+      "prompt_tokens": 9811,
+      "completion_tokens": 88,
+      "total_tokens": 9899,
+      "cost": 0.00233655,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 56
+    },
+    {
+      "call_number": 9,
+      "iteration": 1,
+      "prompt_tokens": 13639,
+      "completion_tokens": 12,
+      "total_tokens": 13651,
+      "cost": 0.00679715,
+      "cached_tokens": 9792,
+      "reasoning_tokens": 5
+    },
+    {
+      "call_number": 10,
+      "iteration": 1,
+      "prompt_tokens": 16124,
+      "completion_tokens": 14,
+      "total_tokens": 16138,
+      "cost": 0.0058764,
+      "cached_tokens": 13632,
+      "reasoning_tokens": 5
+    },
+    {
+      "call_number": 11,
+      "iteration": 1,
+      "prompt_tokens": 16150,
+      "completion_tokens": 75,
+      "total_tokens": 16225,
+      "cost": 0.0035078,
+      "cached_tokens": 16064,
+      "reasoning_tokens": 41
+    },
+    {
+      "call_number": 12,
+      "iteration": 1,
+      "prompt_tokens": 16759,
+      "completion_tokens": 73,
+      "total_tokens": 16832,
+      "cost": 0.00419685,
+      "cached_tokens": 16128,
+      "reasoning_tokens": 35
+    },
+    {
+      "call_number": 13,
+      "iteration": 2,
+      "prompt_tokens": 16840,
+      "completion_tokens": 44,
+      "total_tokens": 16884,
+      "cost": 0.0036208,
+      "cached_tokens": 16704,
+      "reasoning_tokens": 6
+    },
+    {
+      "call_number": 14,
+      "iteration": 3,
+      "prompt_tokens": 16885,
+      "completion_tokens": 71,
+      "total_tokens": 16956,
+      "cost": 0.02114935,
+      "cached_tokens": 128,
+      "reasoning_tokens": 33
+    },
+    {
+      "call_number": 15,
+      "iteration": 4,
+      "prompt_tokens": 16957,
+      "completion_tokens": 113,
+      "total_tokens": 17070,
+      "cost": 0.02134435,
+      "cached_tokens": 128,
+      "reasoning_tokens": 100
+    },
+    {
+      "call_number": 16,
+      "iteration": 4,
+      "prompt_tokens": 18431,
+      "completion_tokens": 71,
+      "total_tokens": 18502,
+      "cost": 0.00587865,
+      "cached_tokens": 16512,
+      "reasoning_tokens": 38
+    },
+    {
+      "call_number": 17,
+      "iteration": 5,
+      "prompt_tokens": 18510,
+      "completion_tokens": 2,
+      "total_tokens": 18512,
+      "cost": 0.0038561,
+      "cached_tokens": 18368,
+      "reasoning_tokens": 2
+    },
+    {
+      "call_number": 18,
+      "iteration": 6,
+      "prompt_tokens": 18511,
+      "completion_tokens": 38,
+      "total_tokens": 18549,
+      "cost": 0.00381295,
+      "cached_tokens": 18496,
+      "reasoning_tokens": 5
+    },
+    {
+      "call_number": 19,
+      "iteration": 7,
+      "prompt_tokens": 18550,
+      "completion_tokens": 33,
+      "total_tokens": 18583,
+      "cost": 0.0039836,
+      "cached_tokens": 18368,
+      "reasoning_tokens": 0
+    },
+    {
+      "call_number": 20,
+      "iteration": 8,
+      "prompt_tokens": 18583,
+      "completion_tokens": 36,
+      "total_tokens": 18619,
+      "cost": 0.00396515,
+      "cached_tokens": 18432,
+      "reasoning_tokens": 2
+    },
+    {
+      "call_number": 21,
+      "iteration": 9,
+      "prompt_tokens": 18620,
+      "completion_tokens": 113,
+      "total_tokens": 18733,
+      "cost": 0.0042039,
+      "cached_tokens": 18432,
+      "reasoning_tokens": 79
+    },
+    {
+      "call_number": 22,
+      "iteration": 10,
+      "prompt_tokens": 18734,
+      "completion_tokens": 67,
+      "total_tokens": 18801,
+      "cost": 0.0042314,
+      "cached_tokens": 18432,
+      "reasoning_tokens": 33
+    },
+    {
+      "call_number": 23,
+      "iteration": 11,
+      "prompt_tokens": 18802,
+      "completion_tokens": 64,
+      "total_tokens": 18866,
+      "cost": 0.0043089,
+      "cached_tokens": 18432,
+      "reasoning_tokens": 31
+    },
+    {
+      "call_number": 24,
+      "iteration": 12,
+      "prompt_tokens": 18867,
+      "completion_tokens": 40,
+      "total_tokens": 18907,
+      "cost": 0.00426295,
+      "cached_tokens": 18496,
+      "reasoning_tokens": 40
+    },
+    {
+      "call_number": 25,
+      "iteration": 13,
+      "prompt_tokens": 18868,
+      "completion_tokens": 51,
+      "total_tokens": 18919,
+      "cost": 0.0039557,
+      "cached_tokens": 18816,
+      "reasoning_tokens": 51
+    },
+    {
+      "call_number": 26,
+      "iteration": 14,
+      "prompt_tokens": 18868,
+      "completion_tokens": 65,
+      "total_tokens": 18933,
+      "cost": 0.0039907,
+      "cached_tokens": 18816,
+      "reasoning_tokens": 32
+    },
+    {
+      "call_number": 27,
+      "iteration": 15,
+      "prompt_tokens": 18934,
+      "completion_tokens": 39,
+      "total_tokens": 18973,
+      "cost": 0.004277,
+      "cached_tokens": 18560,
+      "reasoning_tokens": 0
+    }
+  ],
+  "per_tool_call_details": [
+    {
+      "tool_name": "rapidwright_initialize_rapidwright",
+      "iteration": 0,
+      "elapsed_time": 0.8961529731750488,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_open_checkpoint",
+      "iteration": 0,
+      "elapsed_time": 27.360182762145996,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_report_timing_summary",
+      "iteration": 0,
+      "elapsed_time": 7.30696439743042,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_run_tcl",
+      "iteration": 0,
+      "elapsed_time": 0.05959367752075195,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_get_critical_high_fanout_nets",
+      "iteration": 0,
+      "elapsed_time": 2.772193193435669,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_read_checkpoint",
+      "iteration": 0,
+      "elapsed_time": 1.7400717735290527,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_extract_critical_path_cells",
+      "iteration": 0,
+      "elapsed_time": 0.13643670082092285,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_analyze_critical_path_spread",
+      "iteration": 0,
+      "elapsed_time": 0.006273508071899414,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_optimize_fanout",
+      "iteration": 1,
+      "elapsed_time": 0.018122196197509766,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_optimize_fanout",
+      "iteration": 1,
+      "elapsed_time": 0.0036323070526123047,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_get_critical_high_fanout_nets",
+      "iteration": 1,
+      "elapsed_time": 0.11177515983581543,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_get_design_info",
+      "iteration": 1,
+      "elapsed_time": 0.2034749984741211,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_run_tcl",
+      "iteration": 1,
+      "elapsed_time": 0.17358708381652832,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_run_tcl",
+      "iteration": 1,
+      "elapsed_time": 0.20932412147521973,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_optimize_fanout",
+      "iteration": 1,
+      "elapsed_time": 0.6280319690704346,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_write_checkpoint",
+      "iteration": 1,
+      "elapsed_time": 1.2139899730682373,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_open_checkpoint",
+      "iteration": 1,
+      "elapsed_time": 7.646188020706177,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_route_design",
+      "iteration": 1,
+      "elapsed_time": 20.446059703826904,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_get_wns",
+      "iteration": 1,
+      "elapsed_time": 1.3900542259216309,
+      "wns": 0.0,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 1,
+      "elapsed_time": 4.587979316711426,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_report_timing_summary",
+      "iteration": 4,
+      "elapsed_time": 0.4559948444366455,
+      "wns": null,
+      "error": false
+    }
+  ]
+}

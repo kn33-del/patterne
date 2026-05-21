@@ -1,0 +1,766 @@
+{
+  "model": "x-ai/grok-4.3",
+  "timestamp": "2026-05-20 20:48:35",
+  "summary": {
+    "total_runtime_seconds": 247.5611252784729,
+    "total_llm_calls": 60,
+    "total_iterations": 50,
+    "total_prompt_tokens": 796647,
+    "total_completion_tokens": 9644,
+    "total_tokens": 806291,
+    "total_cached_tokens": 649472,
+    "total_reasoning_tokens": 8376,
+    "total_cost": 0.33797315000000006,
+    "clock_period_ns": null,
+    "initial_wns": null,
+    "best_wns": -Infinity,
+    "wns_improvement": null,
+    "initial_fmax_mhz": null,
+    "best_fmax_mhz": null,
+    "fmax_improvement_mhz": null,
+    "total_tool_calls": 18,
+    "total_tool_time_seconds": 36.33438301086426,
+    "tool_call_counts": {
+      "rapidwright_initialize_rapidwright": 1,
+      "vivado_open_checkpoint": 1,
+      "vivado_report_timing_summary": 3,
+      "vivado_run_tcl": 1,
+      "vivado_get_critical_high_fanout_nets": 1,
+      "rapidwright_read_checkpoint": 1,
+      "vivado_extract_critical_path_cells": 1,
+      "rapidwright_analyze_critical_path_spread": 1,
+      "vivado_phys_opt_design": 1,
+      "vivado_write_checkpoint": 7
+    }
+  },
+  "per_llm_call_details": [
+    {
+      "call_number": 1,
+      "iteration": 1,
+      "prompt_tokens": 7400,
+      "completion_tokens": 263,
+      "total_tokens": 7663,
+      "cost": 0.0097731,
+      "cached_tokens": 128,
+      "reasoning_tokens": 249
+    },
+    {
+      "call_number": 2,
+      "iteration": 1,
+      "prompt_tokens": 7813,
+      "completion_tokens": 61,
+      "total_tokens": 7874,
+      "cost": 0.00219075,
+      "cached_tokens": 7360,
+      "reasoning_tokens": 48
+    },
+    {
+      "call_number": 3,
+      "iteration": 1,
+      "prompt_tokens": 9285,
+      "completion_tokens": 176,
+      "total_tokens": 9461,
+      "cost": 0.00384785,
+      "cached_tokens": 7808,
+      "reasoning_tokens": 142
+    },
+    {
+      "call_number": 4,
+      "iteration": 1,
+      "prompt_tokens": 9601,
+      "completion_tokens": 79,
+      "total_tokens": 9680,
+      "cost": 0.00245475,
+      "cached_tokens": 9280,
+      "reasoning_tokens": 53
+    },
+    {
+      "call_number": 5,
+      "iteration": 2,
+      "prompt_tokens": 9688,
+      "completion_tokens": 25,
+      "total_tokens": 9713,
+      "cost": 0.0020925,
+      "cached_tokens": 9600,
+      "reasoning_tokens": 25
+    },
+    {
+      "call_number": 6,
+      "iteration": 3,
+      "prompt_tokens": 9689,
+      "completion_tokens": 37,
+      "total_tokens": 9726,
+      "cost": 0.00205655,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 11
+    },
+    {
+      "call_number": 7,
+      "iteration": 4,
+      "prompt_tokens": 9728,
+      "completion_tokens": 46,
+      "total_tokens": 9774,
+      "cost": 0.002195,
+      "cached_tokens": 9600,
+      "reasoning_tokens": 20
+    },
+    {
+      "call_number": 8,
+      "iteration": 5,
+      "prompt_tokens": 9775,
+      "completion_tokens": 41,
+      "total_tokens": 9816,
+      "cost": 0.00217405,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 15
+    },
+    {
+      "call_number": 9,
+      "iteration": 6,
+      "prompt_tokens": 9817,
+      "completion_tokens": 40,
+      "total_tokens": 9857,
+      "cost": 0.00222405,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 14
+    },
+    {
+      "call_number": 10,
+      "iteration": 7,
+      "prompt_tokens": 9858,
+      "completion_tokens": 51,
+      "total_tokens": 9909,
+      "cost": 0.0023028,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 25
+    },
+    {
+      "call_number": 11,
+      "iteration": 8,
+      "prompt_tokens": 9910,
+      "completion_tokens": 46,
+      "total_tokens": 9956,
+      "cost": 0.0023553,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 20
+    },
+    {
+      "call_number": 12,
+      "iteration": 9,
+      "prompt_tokens": 9957,
+      "completion_tokens": 111,
+      "total_tokens": 10068,
+      "cost": 0.00257655,
+      "cached_tokens": 9664,
+      "reasoning_tokens": 85
+    },
+    {
+      "call_number": 13,
+      "iteration": 10,
+      "prompt_tokens": 10069,
+      "completion_tokens": 110,
+      "total_tokens": 10179,
+      "cost": 0.00264685,
+      "cached_tokens": 9728,
+      "reasoning_tokens": 84
+    },
+    {
+      "call_number": 14,
+      "iteration": 11,
+      "prompt_tokens": 10180,
+      "completion_tokens": 116,
+      "total_tokens": 10296,
+      "cost": 0.0028006,
+      "cached_tokens": 9728,
+      "reasoning_tokens": 90
+    },
+    {
+      "call_number": 15,
+      "iteration": 12,
+      "prompt_tokens": 10297,
+      "completion_tokens": 134,
+      "total_tokens": 10431,
+      "cost": 0.00292465,
+      "cached_tokens": 9792,
+      "reasoning_tokens": 100
+    },
+    {
+      "call_number": 16,
+      "iteration": 12,
+      "prompt_tokens": 10567,
+      "completion_tokens": 67,
+      "total_tokens": 10634,
+      "cost": 0.00309465,
+      "cached_tokens": 9792,
+      "reasoning_tokens": 41
+    },
+    {
+      "call_number": 17,
+      "iteration": 13,
+      "prompt_tokens": 10642,
+      "completion_tokens": 59,
+      "total_tokens": 10701,
+      "cost": 0.002362,
+      "cached_tokens": 10560,
+      "reasoning_tokens": 33
+    },
+    {
+      "call_number": 18,
+      "iteration": 14,
+      "prompt_tokens": 10702,
+      "completion_tokens": 75,
+      "total_tokens": 10777,
+      "cost": 0.002477,
+      "cached_tokens": 10560,
+      "reasoning_tokens": 41
+    },
+    {
+      "call_number": 19,
+      "iteration": 14,
+      "prompt_tokens": 10913,
+      "completion_tokens": 84,
+      "total_tokens": 10997,
+      "cost": 0.00276325,
+      "cached_tokens": 10560,
+      "reasoning_tokens": 58
+    },
+    {
+      "call_number": 20,
+      "iteration": 15,
+      "prompt_tokens": 11005,
+      "completion_tokens": 51,
+      "total_tokens": 11056,
+      "cost": 0.00245975,
+      "cached_tokens": 10880,
+      "reasoning_tokens": 25
+    },
+    {
+      "call_number": 21,
+      "iteration": 16,
+      "prompt_tokens": 11057,
+      "completion_tokens": 54,
+      "total_tokens": 11111,
+      "cost": 0.00246505,
+      "cached_tokens": 10944,
+      "reasoning_tokens": 54
+    },
+    {
+      "call_number": 22,
+      "iteration": 17,
+      "prompt_tokens": 11058,
+      "completion_tokens": 65,
+      "total_tokens": 11123,
+      "cost": 0.0024266,
+      "cached_tokens": 11008,
+      "reasoning_tokens": 39
+    },
+    {
+      "call_number": 23,
+      "iteration": 18,
+      "prompt_tokens": 11124,
+      "completion_tokens": 105,
+      "total_tokens": 11229,
+      "cost": 0.0140331,
+      "cached_tokens": 128,
+      "reasoning_tokens": 71
+    },
+    {
+      "call_number": 24,
+      "iteration": 18,
+      "prompt_tokens": 11365,
+      "completion_tokens": 101,
+      "total_tokens": 11466,
+      "cost": 0.01432435,
+      "cached_tokens": 128,
+      "reasoning_tokens": 75
+    },
+    {
+      "call_number": 25,
+      "iteration": 19,
+      "prompt_tokens": 11474,
+      "completion_tokens": 27,
+      "total_tokens": 11501,
+      "cost": 0.0028516,
+      "cached_tokens": 11008,
+      "reasoning_tokens": 12
+    },
+    {
+      "call_number": 26,
+      "iteration": 19,
+      "prompt_tokens": 12906,
+      "completion_tokens": 94,
+      "total_tokens": 13000,
+      "cost": 0.0048091,
+      "cached_tokens": 11008,
+      "reasoning_tokens": 68
+    },
+    {
+      "call_number": 27,
+      "iteration": 20,
+      "prompt_tokens": 13008,
+      "completion_tokens": 51,
+      "total_tokens": 13059,
+      "cost": 0.0044259,
+      "cached_tokens": 11392,
+      "reasoning_tokens": 25
+    },
+    {
+      "call_number": 28,
+      "iteration": 21,
+      "prompt_tokens": 13060,
+      "completion_tokens": 127,
+      "total_tokens": 13187,
+      "cost": 0.0046809,
+      "cached_tokens": 11392,
+      "reasoning_tokens": 127
+    },
+    {
+      "call_number": 29,
+      "iteration": 22,
+      "prompt_tokens": 13061,
+      "completion_tokens": 173,
+      "total_tokens": 13234,
+      "cost": 0.00318435,
+      "cached_tokens": 12928,
+      "reasoning_tokens": 147
+    },
+    {
+      "call_number": 30,
+      "iteration": 23,
+      "prompt_tokens": 13235,
+      "completion_tokens": 188,
+      "total_tokens": 13423,
+      "cost": 0.00343935,
+      "cached_tokens": 12928,
+      "reasoning_tokens": 162
+    },
+    {
+      "call_number": 31,
+      "iteration": 24,
+      "prompt_tokens": 13424,
+      "completion_tokens": 159,
+      "total_tokens": 13583,
+      "cost": 0.0035359,
+      "cached_tokens": 12992,
+      "reasoning_tokens": 133
+    },
+    {
+      "call_number": 32,
+      "iteration": 25,
+      "prompt_tokens": 13584,
+      "completion_tokens": 167,
+      "total_tokens": 13751,
+      "cost": 0.0037559,
+      "cached_tokens": 12992,
+      "reasoning_tokens": 141
+    },
+    {
+      "call_number": 33,
+      "iteration": 26,
+      "prompt_tokens": 13752,
+      "completion_tokens": 109,
+      "total_tokens": 13861,
+      "cost": 0.0035521,
+      "cached_tokens": 13248,
+      "reasoning_tokens": 109
+    },
+    {
+      "call_number": 34,
+      "iteration": 27,
+      "prompt_tokens": 13753,
+      "completion_tokens": 101,
+      "total_tokens": 13854,
+      "cost": 0.00306295,
+      "cached_tokens": 13696,
+      "reasoning_tokens": 101
+    },
+    {
+      "call_number": 35,
+      "iteration": 28,
+      "prompt_tokens": 13753,
+      "completion_tokens": 139,
+      "total_tokens": 13892,
+      "cost": 0.01740435,
+      "cached_tokens": 128,
+      "reasoning_tokens": 105
+    },
+    {
+      "call_number": 36,
+      "iteration": 28,
+      "prompt_tokens": 14028,
+      "completion_tokens": 285,
+      "total_tokens": 14313,
+      "cost": 0.0181131,
+      "cached_tokens": 128,
+      "reasoning_tokens": 259
+    },
+    {
+      "call_number": 37,
+      "iteration": 29,
+      "prompt_tokens": 14321,
+      "completion_tokens": 55,
+      "total_tokens": 14376,
+      "cost": 0.00379235,
+      "cached_tokens": 13568,
+      "reasoning_tokens": 29
+    },
+    {
+      "call_number": 38,
+      "iteration": 30,
+      "prompt_tokens": 14377,
+      "completion_tokens": 115,
+      "total_tokens": 14492,
+      "cost": 0.00327315,
+      "cached_tokens": 14272,
+      "reasoning_tokens": 89
+    },
+    {
+      "call_number": 39,
+      "iteration": 31,
+      "prompt_tokens": 14493,
+      "completion_tokens": 355,
+      "total_tokens": 14848,
+      "cost": 0.00401815,
+      "cached_tokens": 14272,
+      "reasoning_tokens": 329
+    },
+    {
+      "call_number": 40,
+      "iteration": 32,
+      "prompt_tokens": 14849,
+      "completion_tokens": 349,
+      "total_tokens": 15198,
+      "cost": 0.00444815,
+      "cached_tokens": 14272,
+      "reasoning_tokens": 323
+    },
+    {
+      "call_number": 41,
+      "iteration": 33,
+      "prompt_tokens": 15199,
+      "completion_tokens": 167,
+      "total_tokens": 15366,
+      "cost": 0.00429625,
+      "cached_tokens": 14400,
+      "reasoning_tokens": 141
+    },
+    {
+      "call_number": 42,
+      "iteration": 34,
+      "prompt_tokens": 15367,
+      "completion_tokens": 353,
+      "total_tokens": 15720,
+      "cost": 0.00497125,
+      "cached_tokens": 14400,
+      "reasoning_tokens": 327
+    },
+    {
+      "call_number": 43,
+      "iteration": 35,
+      "prompt_tokens": 15721,
+      "completion_tokens": 153,
+      "total_tokens": 15874,
+      "cost": 0.01989935,
+      "cached_tokens": 128,
+      "reasoning_tokens": 127
+    },
+    {
+      "call_number": 44,
+      "iteration": 36,
+      "prompt_tokens": 15875,
+      "completion_tokens": 171,
+      "total_tokens": 16046,
+      "cost": 0.02013685,
+      "cached_tokens": 128,
+      "reasoning_tokens": 137
+    },
+    {
+      "call_number": 45,
+      "iteration": 36,
+      "prompt_tokens": 16182,
+      "completion_tokens": 326,
+      "total_tokens": 16508,
+      "cost": 0.0047801,
+      "cached_tokens": 15488,
+      "reasoning_tokens": 300
+    },
+    {
+      "call_number": 46,
+      "iteration": 37,
+      "prompt_tokens": 16516,
+      "completion_tokens": 146,
+      "total_tokens": 16662,
+      "cost": 0.0040756,
+      "cached_tokens": 16128,
+      "reasoning_tokens": 146
+    },
+    {
+      "call_number": 47,
+      "iteration": 38,
+      "prompt_tokens": 16517,
+      "completion_tokens": 195,
+      "total_tokens": 16712,
+      "cost": 0.00379615,
+      "cached_tokens": 16512,
+      "reasoning_tokens": 169
+    },
+    {
+      "call_number": 48,
+      "iteration": 39,
+      "prompt_tokens": 16713,
+      "completion_tokens": 180,
+      "total_tokens": 16893,
+      "cost": 0.00440685,
+      "cached_tokens": 16128,
+      "reasoning_tokens": 154
+    },
+    {
+      "call_number": 49,
+      "iteration": 40,
+      "prompt_tokens": 16894,
+      "completion_tokens": 156,
+      "total_tokens": 17050,
+      "cost": 0.0042371,
+      "cached_tokens": 16448,
+      "reasoning_tokens": 156
+    },
+    {
+      "call_number": 50,
+      "iteration": 41,
+      "prompt_tokens": 16895,
+      "completion_tokens": 132,
+      "total_tokens": 17027,
+      "cost": 0.00377515,
+      "cached_tokens": 16832,
+      "reasoning_tokens": 132
+    },
+    {
+      "call_number": 51,
+      "iteration": 42,
+      "prompt_tokens": 16895,
+      "completion_tokens": 291,
+      "total_tokens": 17186,
+      "cost": 0.00417265,
+      "cached_tokens": 16832,
+      "reasoning_tokens": 265
+    },
+    {
+      "call_number": 52,
+      "iteration": 43,
+      "prompt_tokens": 17187,
+      "completion_tokens": 160,
+      "total_tokens": 17347,
+      "cost": 0.00461335,
+      "cached_tokens": 16448,
+      "reasoning_tokens": 134
+    },
+    {
+      "call_number": 53,
+      "iteration": 44,
+      "prompt_tokens": 17348,
+      "completion_tokens": 109,
+      "total_tokens": 17457,
+      "cost": 0.0043511,
+      "cached_tokens": 16768,
+      "reasoning_tokens": 75
+    },
+    {
+      "call_number": 54,
+      "iteration": 44,
+      "prompt_tokens": 17593,
+      "completion_tokens": 564,
+      "total_tokens": 18157,
+      "cost": 0.02326685,
+      "cached_tokens": 128,
+      "reasoning_tokens": 564
+    },
+    {
+      "call_number": 55,
+      "iteration": 45,
+      "prompt_tokens": 17599,
+      "completion_tokens": 126,
+      "total_tokens": 17725,
+      "cost": 0.00390095,
+      "cached_tokens": 17536,
+      "reasoning_tokens": 100
+    },
+    {
+      "call_number": 56,
+      "iteration": 46,
+      "prompt_tokens": 17729,
+      "completion_tokens": 905,
+      "total_tokens": 18634,
+      "cost": 0.00601095,
+      "cached_tokens": 17536,
+      "reasoning_tokens": 905
+    },
+    {
+      "call_number": 57,
+      "iteration": 47,
+      "prompt_tokens": 17730,
+      "completion_tokens": 262,
+      "total_tokens": 17992,
+      "cost": 0.0044047,
+      "cached_tokens": 17536,
+      "reasoning_tokens": 236
+    },
+    {
+      "call_number": 58,
+      "iteration": 48,
+      "prompt_tokens": 17993,
+      "completion_tokens": 220,
+      "total_tokens": 18213,
+      "cost": 0.00449405,
+      "cached_tokens": 17664,
+      "reasoning_tokens": 220
+    },
+    {
+      "call_number": 59,
+      "iteration": 49,
+      "prompt_tokens": 17994,
+      "completion_tokens": 127,
+      "total_tokens": 18121,
+      "cost": 0.0226756,
+      "cached_tokens": 128,
+      "reasoning_tokens": 101
+    },
+    {
+      "call_number": 60,
+      "iteration": 50,
+      "prompt_tokens": 18122,
+      "completion_tokens": 410,
+      "total_tokens": 18532,
+      "cost": 0.0063399,
+      "cached_tokens": 16512,
+      "reasoning_tokens": 410
+    }
+  ],
+  "per_tool_call_details": [
+    {
+      "tool_name": "rapidwright_initialize_rapidwright",
+      "iteration": 0,
+      "elapsed_time": 0.8672425746917725,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_open_checkpoint",
+      "iteration": 0,
+      "elapsed_time": 22.104049921035767,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_report_timing_summary",
+      "iteration": 0,
+      "elapsed_time": 8.213507652282715,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_run_tcl",
+      "iteration": 0,
+      "elapsed_time": 0.057306766510009766,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_get_critical_high_fanout_nets",
+      "iteration": 0,
+      "elapsed_time": 0.21486759185791016,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_read_checkpoint",
+      "iteration": 0,
+      "elapsed_time": 1.2760393619537354,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_extract_critical_path_cells",
+      "iteration": 0,
+      "elapsed_time": 0.16213154792785645,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "rapidwright_analyze_critical_path_spread",
+      "iteration": 0,
+      "elapsed_time": 0.0058536529541015625,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_phys_opt_design",
+      "iteration": 1,
+      "elapsed_time": 0.08401370048522949,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_report_timing_summary",
+      "iteration": 1,
+      "elapsed_time": 0.19603776931762695,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 1,
+      "elapsed_time": 0.42284250259399414,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 12,
+      "elapsed_time": 0.4122130870819092,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 14,
+      "elapsed_time": 0.3921699523925781,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 18,
+      "elapsed_time": 0.4214944839477539,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_report_timing_summary",
+      "iteration": 19,
+      "elapsed_time": 0.1999647617340088,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 28,
+      "elapsed_time": 0.42562055587768555,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 36,
+      "elapsed_time": 0.4151310920715332,
+      "wns": null,
+      "error": false
+    },
+    {
+      "tool_name": "vivado_write_checkpoint",
+      "iteration": 44,
+      "elapsed_time": 0.4638960361480713,
+      "wns": null,
+      "error": false
+    }
+  ]
+}

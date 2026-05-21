@@ -3,6 +3,47 @@ import re
 from pathlib import Path
 from typing import List
 
+STRATEGY_ALIASES = {
+    "highfanoutnetoptimization": "High Fanout Net Optimization",
+    "highfanoutnetopt": "High Fanout Net Optimization",
+    "highfanoutopt": "High Fanout Net Optimization",
+    "fanout": "High Fanout Net Optimization",
+    "fanoutopt": "High Fanout Net Optimization",
+    "optimizefanout": "High Fanout Net Optimization",
+    "pblockbasedreplacement": "Pblock-Based Re-placement",
+    "pblockreplacement": "Pblock-Based Re-placement",
+    "pblock": "Pblock-Based Re-placement",
+    "pblockopt": "Pblock-Based Re-placement",
+    "physicaloptimization": "Physical Optimization",
+    "physopt": "Physical Optimization",
+    "physoptdesign": "Physical Optimization",
+}
+
+
+def normalize_strategy_name(strategy: str) -> str:
+    """
+    Collapse free-form agent strategy names into canonical history buckets.
+    """
+    cleaned = re.sub(r"[^a-z0-9]+", "", str(strategy).lower())
+    return STRATEGY_ALIASES.get(cleaned, str(strategy).strip())
+
+
+def normalize_history(history: dict) -> dict:
+    """
+    Merge any older free-form strategy keys into canonical strategy buckets.
+    """
+    merged = {}
+    for strategy, outcomes in history.get("strategy_outcomes", {}).items():
+        canonical = normalize_strategy_name(strategy)
+        merged.setdefault(canonical, {"improved": 0, "regressed": 0, "no_change": 0})
+        for outcome in ("improved", "regressed", "no_change"):
+            merged[canonical][outcome] += int((outcomes or {}).get(outcome, 0) or 0)
+
+    history["strategy_outcomes"] = merged
+    history.setdefault("endpoint_failures", {})
+    return history
+
+
 def parse_result_log(log_text: str) -> dict:
     """
     Extracts the RESULT line from agent output and parses it into a dict.
@@ -21,7 +62,7 @@ def parse_result_log(log_text: str) -> dict:
     if not match:
         return {}
     return {
-        "strategy": match.group("strategy").strip(),
+        "strategy": normalize_strategy_name(match.group("strategy").strip()),
         "wns_before": float(match.group("wns_before").strip()),
         "wns_after": float(match.group("wns_after").strip()),
         "delta": float(match.group("delta").strip()),
@@ -39,6 +80,7 @@ def update_history(history_path: str, result: dict, failing_endpoints: List[str]
     except (FileNotFoundError, json.JSONDecodeError):
         history = {"strategy_outcomes": {}, "endpoint_failures": {}}
 
+    history = normalize_history(history)
     history.setdefault("strategy_outcomes", {})
     history.setdefault("endpoint_failures", {})
 
@@ -76,6 +118,7 @@ def build_pattern_summary(history_path: str) -> str:
     except (FileNotFoundError, json.JSONDecodeError):
         return "No pattern history available."
 
+    history = normalize_history(history)
     lines = []
     strategy_items = sorted(history.get("strategy_outcomes", {}).items())
     for strat, outcomes in strategy_items:

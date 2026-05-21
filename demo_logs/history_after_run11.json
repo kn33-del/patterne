@@ -8,11 +8,11 @@
     "Physical Optimization": {
       "improved": 0,
       "regressed": 0,
-      "no_change": 5
+      "no_change": 4
     }
   },
   "endpoint_failures": {
-    "accum_out[0]": 2,
-    "shift_a_reg[0][0]/D": 2
+    "accum_out[0]": 1,
+    "shift_a_reg[0][0]/D": 1
   }
 }

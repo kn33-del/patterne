@@ -81,6 +81,8 @@ CRITICAL RULES:
 - If a tool fails, check the error message - verify net name exists and retry or skip
 - Track WNS: stop if no improvement after 3 attempts
 - Be concise - focus on actions and timing numbers
+- Skip any strategy listed as regressed 2+ times or no_change 2+ times unless no other option remains.
+- If the same strategy has been used 3+ times in a row, try a different viable strategy unless the analysis strongly recommends the repeated one.
 
 FINAL REPORT FORMAT:
 After completing optimization, output exactly this line:
