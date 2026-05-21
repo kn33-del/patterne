@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import json
 import tempfile
 import uuid
 import zipfile
@@ -314,6 +315,22 @@ def create_app(settings: Optional[Settings] = None) -> FastAPI:
     @app.get("/api/health")
     def health() -> Dict[str, str]:
         return {"status": "ok"}
+
+    @app.get("/api/pattern-history")
+    def get_pattern_history() -> Dict[str, Any]:
+        history_path = resolved_settings.repo_root / "history.json"
+        if not history_path.exists():
+            return {"strategy_outcomes": {}, "endpoint_failures": {}}
+        try:
+            payload = json.loads(history_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise HTTPException(status_code=500, detail=f"Could not parse {history_path.name}.") from exc
+        if not isinstance(payload, dict):
+            raise HTTPException(status_code=500, detail="Pattern history must be a JSON object.")
+        return {
+            "strategy_outcomes": payload.get("strategy_outcomes") or {},
+            "endpoint_failures": payload.get("endpoint_failures") or {},
+        }
 
     @app.get("/api/demo/featured", response_model=DemoScenario)
     def get_featured_demo() -> Dict[str, Any]:

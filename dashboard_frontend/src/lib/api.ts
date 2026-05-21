@@ -201,6 +201,15 @@ export interface SettingsResponse {
   preflight: Record<string, unknown> | null;
 }
 
+export interface PatternHistory {
+  strategy_outcomes: Record<string, {
+    improved?: number;
+    regressed?: number;
+    no_change?: number;
+  }>;
+  endpoint_failures: Record<string, number>;
+}
+
 export interface TextPreview {
   path: string;
   size_bytes: number;
@@ -273,6 +282,10 @@ export async function getSettings(): Promise<SettingsResponse> {
 
 export async function getFeaturedDemoScenario(): Promise<DemoScenario> {
   return request("/api/demo/featured");
+}
+
+export async function getPatternHistory(): Promise<PatternHistory> {
+  return request("/api/pattern-history");
 }
 
 export async function listDcps(): Promise<DcpRecord[]> {

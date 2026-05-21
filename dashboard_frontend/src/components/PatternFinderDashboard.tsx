@@ -1,15 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, startTransition } from "react";
 
-type StrategyOutcome = {
-  improved?: number;
-  regressed?: number;
-  no_change?: number;
-};
-
-type PatternHistory = {
-  strategy_outcomes: Record<string, StrategyOutcome>;
-  endpoint_failures: Record<string, number>;
-};
+import { getPatternHistory, type PatternHistory } from "../lib/api";
 
 const initialPatternHistory: PatternHistory = {
   strategy_outcomes: {
@@ -29,7 +20,32 @@ function formatStrategyName(strategy: string): string {
 }
 
 export function PatternFinderDashboard() {
-  const [history] = useState<PatternHistory>(initialPatternHistory);
+  const [history, setHistory] = useState<PatternHistory>(initialPatternHistory);
+  const [source, setSource] = useState<"live" | "demo">("demo");
+
+  useEffect(() => {
+    let cancelled = false;
+    void getPatternHistory()
+      .then((payload) => {
+        if (!cancelled) {
+          startTransition(() => {
+            setHistory(payload);
+            setSource("live");
+          });
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          startTransition(() => {
+            setHistory(initialPatternHistory);
+            setSource("demo");
+          });
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const strategies = useMemo(
     () =>
@@ -53,7 +69,7 @@ export function PatternFinderDashboard() {
           <span className="eyebrow">Agent Memory</span>
           <h2>Pattern Finder History</h2>
         </div>
-        <span className="badge">history.json</span>
+        <span className="badge">{source === "live" ? "Live history.json" : "Demo history"}</span>
       </div>
 
       <div className="pattern-grid">
