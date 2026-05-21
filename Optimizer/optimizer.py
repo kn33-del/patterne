@@ -28,6 +28,12 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from openai import OpenAI
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+
+from pattern_finder import build_pattern_summary, parse_result_log, update_history
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -37,7 +43,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Default model
-DEFAULT_MODEL = "x-ai/grok-4.1-fast"
+DEFAULT_MODEL = "x-ai/grok-4.3"
 
 
 def terminal_log(kind: str, msg: str, iteration: Optional[int] = None, wns: Optional[float] = None, fmax: Optional[float] = None, **kwargs):
@@ -568,6 +574,8 @@ class DCPOptimizer(DCPOptimizerBase):
         
         # Track all tool calls with timing and WNS
         self.tool_call_details = []
+        self.latest_failing_endpoints: list[str] = []
+        self.pattern_history_path = Path("history.json")
         
         # Track total runtime
         self.start_time = None
@@ -622,6 +630,20 @@ class DCPOptimizer(DCPOptimizerBase):
             # Track WNS from timing reports and get_wns calls
             if tool_name == "vivado_report_timing_summary":
                 timing_info = parse_timing_summary_static(result_text)
+                failing_endpoints = []
+                in_violated_path = False
+                for line in result_text.splitlines():
+                    if "Slack (VIOLATED)" in line:
+                        in_violated_path = True
+                        continue
+                    if in_violated_path and "Destination:" in line:
+                        endpoint = line.split("Destination:", 1)[1].strip()
+                        if endpoint and endpoint not in failing_endpoints:
+                            failing_endpoints.append(endpoint)
+                        in_violated_path = False
+                if failing_endpoints:
+                    self.latest_failing_endpoints = failing_endpoints
+
                 if timing_info["wns"] is not None:
                     current_wns = timing_info["wns"]
                     wns_measured = current_wns  # Store for tracking
@@ -761,6 +783,15 @@ class DCPOptimizer(DCPOptimizerBase):
         
         # No tool calls - check if we're done
         content = message.content or ""
+        result = parse_result_log(content)
+        if result:
+            terminal_log("RESULT", content.strip())
+            update_history(
+                str(self.pattern_history_path),
+                result,
+                self.latest_failing_endpoints,
+            )
+            terminal_log("INFO", f"Pattern history updated: {self.pattern_history_path}")
         
         content_lower = content.lower()
         completion_phrases = [
@@ -775,7 +806,7 @@ class DCPOptimizer(DCPOptimizerBase):
                 "wns >= 0",
                 "design meets timing",
             ])
-        is_done = any(phrase in content_lower for phrase in completion_phrases)
+        is_done = bool(result) or any(phrase in content_lower for phrase in completion_phrases)
         
         return content, is_done
     
@@ -1066,10 +1097,18 @@ class DCPOptimizer(DCPOptimizerBase):
         
         # Load and fill in system prompt with temp directory and input DCP path
         system_prompt_template = load_system_prompt()
-        system_prompt = system_prompt_template.format(
-            temp_dir=self.temp_dir,
-            input_dcp=input_dcp.resolve()
+        system_prompt = (
+            system_prompt_template
+            .replace("{temp_dir}", str(self.temp_dir))
+            .replace("{input_dcp}", str(input_dcp.resolve()))
         )
+        summary = build_pattern_summary(str(self.pattern_history_path))
+        pattern_block = f"""PATTERN HISTORY (from previous runs):
+{summary}
+RULE: Skip any strategy listed as regressed 2+ times unless no other option remains.
+
+"""
+        system_prompt = pattern_block + system_prompt
         
         # Initialize conversation with analysis results
         self.messages = [

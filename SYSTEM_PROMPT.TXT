@@ -81,3 +81,7 @@ CRITICAL RULES:
 - If a tool fails, check the error message - verify net name exists and retry or skip
 - Track WNS: stop if no improvement after 3 attempts
 - Be concise - focus on actions and timing numbers
+
+FINAL REPORT FORMAT:
+After completing optimization, output exactly this line:
+RESULT: {strategy_used} | WNS_before: {x} | WNS_after: {y} | delta: {z} | outcome: improved/regressed/no_change

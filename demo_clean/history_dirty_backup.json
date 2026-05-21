@@ -1,0 +1,15 @@
+{
+  "strategy_outcomes": {
+    "HighFanoutOpt": {
+      "improved": 2,
+      "regressed": 0,
+      "no_change": 1
+    },
+    "phys_opt": {
+      "improved": 0,
+      "regressed": 0,
+      "no_change": 2
+    }
+  },
+  "endpoint_failures": {}
+}

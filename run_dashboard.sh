@@ -12,7 +12,9 @@ fi
 # shellcheck disable=SC1091
 source "$VENV_ACTIVATE"
 
-export JAVA_HOME="${JAVA_HOME:-/tools/Xilinx/Vivado/2024.2/tps/lnx64/jre21.0.1_12}"
+#export JAVA_HOME="${JAVA_HOME:-/tools/Xilinx/Vivado/2024.2/tps/lnx64/jre21.0.1_12}"
+#for ews
+export JAVA_HOME="/software/xilinx-2025.1/2025.1/Vivado/tps/lnx64/jre21.0.1_12"
 export PATH="$JAVA_HOME/bin:$PATH"
 if [[ -n "${LD_LIBRARY_PATH:-}" ]]; then
   export LD_LIBRARY_PATH="$JAVA_HOME/lib/server:$LD_LIBRARY_PATH"

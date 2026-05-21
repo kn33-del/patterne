@@ -1,0 +1,10 @@
+{
+  "strategy_outcomes": {
+    "HighFanoutOpt": {
+      "improved": 1,
+      "regressed": 0,
+      "no_change": 1
+    }
+  },
+  "endpoint_failures": {}
+}

@@ -547,9 +547,10 @@ class HistoryAwareDCPOptimizer(DCPOptimizer):
         #Build initial prompt (same as base class)
         from optimizer import load_system_prompt
         system_prompt_template = load_system_prompt()
-        system_prompt = system_prompt_template.format(
-            temp_dir=self.temp_dir,
-            input_dcp=input_dcp.resolve(),
+        system_prompt = (
+            system_prompt_template
+            .replace("{temp_dir}", str(self.temp_dir))
+            .replace("{input_dcp}", str(input_dcp.resolve()))
         )
 
         self.messages = [

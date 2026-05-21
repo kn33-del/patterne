@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, startTransition } from "react";
 import { useParams } from "react-router-dom";
 
 import { RecipeCards } from "../components/RecipeCards";
+import { PatternFinderDashboard } from "../components/PatternFinderDashboard";
 import { StatusPill } from "../components/StatusPill";
 import {
   artifactDownloadUrl,
@@ -15,6 +16,7 @@ import {
   getRunSummary,
   getWrapperLog,
   listArtifacts,
+  OptimizeConfig,
   optimizeRun,
   requestAiPlan,
   type AIConfig,
@@ -228,13 +230,14 @@ export function RunDetailPage() {
       switch (selectedRecipe) {
         case "quick_timing_rescue":
         case "pblock_explorer":
-          payload = await optimizeRun(runId, selectedRecipe, pblockConfig);
+          //payload = await optimizeRun(runId, selectedRecipe, pblockConfig);
+          payload = await optimizeRun(runId, selectedRecipe, pblockConfig as any as  OptimizeConfig);
           break;
         case "high_fanout_optimization":
-          payload = await optimizeRun(runId, selectedRecipe, highFanoutConfig);
+          payload = await optimizeRun(runId, selectedRecipe, highFanoutConfig as any as  OptimizeConfig);
           break;
         case "ai_autopilot":
-          payload = await optimizeRun(runId, selectedRecipe, aiConfig);
+          payload = await optimizeRun(runId, selectedRecipe, aiConfig as any as  OptimizeConfig);
           break;
         case "ai_recommended_plan":
           if (!aiPlan) {
@@ -394,81 +397,85 @@ export function RunDetailPage() {
       </section>
 
       {activeTab === "overview" ? (
-        <section className="panel section-stack">
-          <div className="comparison-grid">
-            <article className="panel inset">
-              <h3>Baseline</h3>
-              <dl className="metric-list">
-                <div>
-                  <dt>WNS</dt>
-                  <dd>{formatMaybeNumber(summary.baseline?.timing.wns)}</dd>
-                </div>
-                <div>
-                  <dt>TNS</dt>
-                  <dd>{formatMaybeNumber(summary.baseline?.timing.tns)}</dd>
-                </div>
-                <div>
-                  <dt>Fmax</dt>
-                  <dd>{formatMaybeNumber(summary.baseline?.timing.estimated_fmax_mhz)} MHz</dd>
-                </div>
-                <div>
-                  <dt>Failing endpoints</dt>
-                  <dd>{formatInteger(summary.baseline?.timing.failing_endpoints)}</dd>
-                </div>
-              </dl>
-            </article>
-            <article className="panel inset best-card">
-              <h3>Best Result</h3>
-              <dl className="metric-list">
-                <div>
-                  <dt>WNS</dt>
-                  <dd>{formatMaybeNumber(summary.best_timing.wns)}</dd>
-                </div>
-                <div>
-                  <dt>TNS</dt>
-                  <dd>{formatMaybeNumber(summary.best_timing.tns)}</dd>
-                </div>
-                <div>
-                  <dt>Fmax</dt>
-                  <dd>{formatMaybeNumber(summary.best_timing.estimated_fmax_mhz)} MHz</dd>
-                </div>
-                <div>
-                  <dt>Failing endpoints</dt>
-                  <dd>{formatInteger(summary.best_timing.failing_endpoints)}</dd>
-                </div>
-              </dl>
-            </article>
-          </div>
-
-          {aiSummary ? (
-            <div className="table-shell">
-              <table className="data-table">
-                <tbody>
-                  <tr>
-                    <th>Model</th>
-                    <td>{aiSummary.model ?? "Not available"}</td>
-                  </tr>
-                  <tr>
-                    <th>Phase</th>
-                    <td>{aiSummary.phase ?? "Not available"}</td>
-                  </tr>
-                  <tr>
-                    <th>Iterations</th>
-                    <td>{aiSummary.iteration ?? "Not available"}</td>
-                  </tr>
-                  <tr>
-                    <th>LLM calls</th>
-                    <td>{aiSummary.llm_call_count}</td>
-                  </tr>
-                  <tr>
-                    <th>Cost</th>
-                    <td>{aiSummary.estimated_cost_usd === null ? "Not available" : `$${formatMaybeNumber(aiSummary.estimated_cost_usd, 4)}`}</td>
-                  </tr>
-                </tbody>
-              </table>
+        <>
+          <section className="panel section-stack">
+            <div className="comparison-grid">
+              <article className="panel inset">
+                <h3>Baseline</h3>
+                <dl className="metric-list">
+                  <div>
+                    <dt>WNS</dt>
+                    <dd>{formatMaybeNumber(summary.baseline?.timing.wns)}</dd>
+                  </div>
+                  <div>
+                    <dt>TNS</dt>
+                    <dd>{formatMaybeNumber(summary.baseline?.timing.tns)}</dd>
+                  </div>
+                  <div>
+                    <dt>Fmax</dt>
+                    <dd>{formatMaybeNumber(summary.baseline?.timing.estimated_fmax_mhz)} MHz</dd>
+                  </div>
+                  <div>
+                    <dt>Failing endpoints</dt>
+                    <dd>{formatInteger(summary.baseline?.timing.failing_endpoints)}</dd>
+                  </div>
+                </dl>
+              </article>
+              <article className="panel inset best-card">
+                <h3>Best Result</h3>
+                <dl className="metric-list">
+                  <div>
+                    <dt>WNS</dt>
+                    <dd>{formatMaybeNumber(summary.best_timing.wns)}</dd>
+                  </div>
+                  <div>
+                    <dt>TNS</dt>
+                    <dd>{formatMaybeNumber(summary.best_timing.tns)}</dd>
+                  </div>
+                  <div>
+                    <dt>Fmax</dt>
+                    <dd>{formatMaybeNumber(summary.best_timing.estimated_fmax_mhz)} MHz</dd>
+                  </div>
+                  <div>
+                    <dt>Failing endpoints</dt>
+                    <dd>{formatInteger(summary.best_timing.failing_endpoints)}</dd>
+                  </div>
+                </dl>
+              </article>
             </div>
-          ) : null}
-        </section>
+
+            {aiSummary ? (
+              <div className="table-shell">
+                <table className="data-table">
+                  <tbody>
+                    <tr>
+                      <th>Model</th>
+                      <td>{aiSummary.model ?? "Not available"}</td>
+                    </tr>
+                    <tr>
+                      <th>Phase</th>
+                      <td>{aiSummary.phase ?? "Not available"}</td>
+                    </tr>
+                    <tr>
+                      <th>Iterations</th>
+                      <td>{aiSummary.iteration ?? "Not available"}</td>
+                    </tr>
+                    <tr>
+                      <th>LLM calls</th>
+                      <td>{aiSummary.llm_call_count}</td>
+                    </tr>
+                    <tr>
+                      <th>Cost</th>
+                      <td>{aiSummary.estimated_cost_usd === null ? "Not available" : `$${formatMaybeNumber(aiSummary.estimated_cost_usd, 4)}`}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
+          </section>
+
+          <PatternFinderDashboard />
+        </>
       ) : null}
 
       {activeTab === "baseline" && baseline ? (
